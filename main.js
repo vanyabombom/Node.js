@@ -6,17 +6,17 @@ fs.access(filename)
     .then(() => {
         fs.open(filename, 'r')
             .then(async file => {
-                const leftColumn = [];
-                const rightColumn = [];
+                const leftSide = [];
+                const rightSide = [];
                 for await (let line of file.readLines()) {
                     const [key, value] = line.split('=');
                     if (key && value) {
-                        leftColumn.push(key.trim());
-                        rightColumn.push(value.trim());
+                        leftSide.push(key.trim());
+                        rightSide.push(value.trim());
                     }
                 }
-            console.log("left colum:" + leftColumn);
-            console.log("right colum:" + rightColumn);
+            console.log("Left side:" + leftSide);
+            console.log("Right side:" + rightSide);
             })
     })
     .catch(async err => {
